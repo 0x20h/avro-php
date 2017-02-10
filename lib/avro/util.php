@@ -35,7 +35,7 @@ class AvroUtil
    * starting with zero).
    *
    * @param array $ary array to test
-   * @return true if the array is a list and false otherwise.
+   * @returns true if the array is a list and false otherwise.
    *
    */
   static function is_list($ary)
@@ -57,7 +57,7 @@ class AvroUtil
   /**
    * @param array $ary
    * @param string $key
-   * @return mixed the value of $ary[$key] if it is set,
+   * @returns mixed the value of $ary[$key] if it is set,
    *                and null otherwise.
    */
   static function array_value($ary, $key)

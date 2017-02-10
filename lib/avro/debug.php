@@ -43,7 +43,7 @@ class AvroDebug
 
   /**
    * @var int $debug_level
-   * @return boolean true if the given $debug_level is equivalent
+   * @returns boolean true if the given $debug_level is equivalent
    *                  or more verbose than than the current debug level
    *                  and false otherwise.
    */
@@ -57,7 +57,7 @@ class AvroDebug
    *                     to <code>vprintf</code>.
    * @param array  $args   array of arguments to pass to vsprinf.
    * @param int    $debug_level debug level at which to print this statement
-   * @return boolean true
+   * @returns boolean true
    */
   static function debug($format, $args, $debug_level=self::DEBUG1)
   {
@@ -68,14 +68,14 @@ class AvroDebug
 
   /**
    * @param string $str
-   * @return string[] array of hex representation of each byte of $str
+   * @returns string[] array of hex representation of each byte of $str
    */
   static function hex_array($str) { return self::bytes_array($str); }
 
   /**
    * @param string $str
    * @param string $joiner string used to join
-   * @return string hex-represented bytes of each byte of $str
+   * @returns string hex-represented bytes of each byte of $str
                      joined by $joiner
    */
   static function hex_string($str, $joiner=' ')
@@ -86,7 +86,7 @@ class AvroDebug
   /**
    * @param string $str
    * @param string $format format to represent bytes
-   * @return string[] array of each byte of $str formatted using $format
+   * @returns string[] array of each byte of $str formatted using $format
    */
   static function bytes_array($str, $format='x%02x')
   {
@@ -98,14 +98,14 @@ class AvroDebug
 
   /**
    * @param string $str
-   * @return string[] array of bytes of $str represented in decimal format ('%3d')
+   * @returns string[] array of bytes of $str represented in decimal format ('%3d')
    */
   static function dec_array($str) { return self::bytes_array($str, '%3d'); }
 
   /**
    * @param string $str
    * @param string $joiner string to join bytes of $str
-   * @return string of bytes of $str represented in decimal format
+   * @returns string of bytes of $str represented in decimal format
    * @uses dec_array()
    */
   static function dec_string($str, $joiner = ' ')
@@ -116,15 +116,14 @@ class AvroDebug
   /**
    * @param string $str
    * @param string $format one of 'ctrl', 'hex', or 'dec' for control,
-   * hexadecimal, or decimal format for bytes.
-   * - ctrl: ASCII control characters represented as text.
-   * For example, the null byte is represented as 'NUL'.
-   * Visible ASCII characters represent themselves, and
-   * others are represented as a decimal ('%03d')
-   * - hex: bytes represented in hexadecimal ('%02X')
-   * - dec: bytes represented in decimal ('%03d')
-   * @return string[] array of bytes represented in the given format.
-   * @throws AvroException
+                           hexadecimal, or decimal format for bytes.
+                           - ctrl: ASCII control characters represented as text.
+                             For example, the null byte is represented as 'NUL'.
+                             Visible ASCII characters represent themselves, and
+                             others are represented as a decimal ('%03d')
+                           - hex: bytes represented in hexadecimal ('%02X')
+                           - dec: bytes represented in decimal ('%03d')
+   * @returns string[] array of bytes represented in the given format.
    */
   static function ascii_array($str, $format='ctrl')
   {
@@ -185,7 +184,7 @@ class AvroDebug
    * @param string $format one of 'ctrl', 'hex', or 'dec'.
    *                       See {@link self::ascii_array()} for more description
    * @param string $joiner
-   * @return string of bytes joined by $joiner
+   * @returns string of bytes joined by $joiner
    * @uses ascii_array()
    */
   static function ascii_string($str, $format='ctrl', $joiner = ' ')

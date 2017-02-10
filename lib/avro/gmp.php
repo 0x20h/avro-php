@@ -38,7 +38,7 @@ class AvroGMP {
   private static $gmp_0;
 
   /**
-   * @return resource GMP resource for zero
+   * @returns resource GMP resource for zero
    */
   private static function gmp_0()
   {
@@ -53,7 +53,7 @@ class AvroGMP {
   private static $gmp_1;
 
   /**
-   * @return resource GMP resource for one (1)
+   * @returns resource GMP resource for one (1)
    */
   private static function gmp_1()
   {
@@ -68,7 +68,7 @@ class AvroGMP {
   private static $gmp_2;
 
   /**
-   * @return resource GMP resource for two (2)
+   * @returns resource GMP resource for two (2)
    */
   private static function gmp_2()
   {
@@ -83,7 +83,7 @@ class AvroGMP {
   private static $gmp_0x7f;
 
   /**
-   * @return resource GMP resource for 0x7f
+   * @returns resource GMP resource for 0x7f
    */
   private static function gmp_0x7f()
   {
@@ -98,7 +98,7 @@ class AvroGMP {
   private static $gmp_n0x7f;
 
   /**
-   * @return resource GMP resource for 64-bit ~0x7f
+   * @returns resource GMP resource for 64-bit ~0x7f
    */
   private static function gmp_n0x7f()
   {
@@ -113,7 +113,7 @@ class AvroGMP {
   private static $gmp_0xfs;
 
   /**
-   * @return resource GMP resource for 64-bits of 1
+   * @returns resource GMP resource for 64-bits of 1
    */
   private static function gmp_0xfs()
   {
@@ -124,7 +124,7 @@ class AvroGMP {
 
   /**
    * @param GMP resource
-   * @return GMP resource 64-bit two's complement of input.
+   * @returns GMP resource 64-bit two's complement of input.
    */
   static function gmp_twos_complement($g)
   {
@@ -135,7 +135,7 @@ class AvroGMP {
    * @interal Only works up to shift 63 (doesn't wrap bits around).
    * @param resource|int|string $g
    * @param int $shift number of bits to shift left
-   * @return resource $g shifted left
+   * @returns resource $g shifted left
    */
   static function shift_left($g, $shift)
   {
@@ -157,7 +157,7 @@ class AvroGMP {
    * Arithmetic right shift
    * @param resource|int|string $g
    * @param int $shift number of bits to shift right
-   * @return resource $g shifted right $shift bits
+   * @returns resource $g shifted right $shift bits
    */
   static function shift_right($g, $shift)
   {
@@ -182,7 +182,7 @@ class AvroGMP {
   }
 
   /**
-   * @param int|string $n integer (or string representation of integer) to encode
+   * @param int|str $n integer (or string representation of integer) to encode
    * @return string $bytes of the long $n encoded per the Avro spec
    */
   static function encode_long($n)

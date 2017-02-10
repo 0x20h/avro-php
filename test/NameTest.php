@@ -19,9 +19,6 @@
 
 require_once('test_helper.php');
 
-/**
- * Class NameExample
- */
 class NameExample
 {
   var $is_valid;
@@ -29,15 +26,6 @@ class NameExample
   var $namespace;
   var $default_namespace;
   var $expected_fullname;
-
-  /**
-   * NameExample constructor.
-   * @param $name
-   * @param $namespace
-   * @param $default_namespace
-   * @param $is_valid
-   * @param null $expected_fullname
-   */
   function __construct($name, $namespace, $default_namespace, $is_valid,
                        $expected_fullname=null)
   {
@@ -48,24 +36,15 @@ class NameExample
     $this->expected_fullname = $expected_fullname;
   }
 
-  /**
-   * @return mixed
-   */
   function __toString()
   {
     return var_export($this, true);
   }
 }
 
-/**
- * Class NameTest
- */
 class NameTest extends PHPUnit_Framework_TestCase
 {
 
-  /**
-   * @return array
-   */
   function fullname_provider()
   {
     $examples = array(new NameExample('foo', null, null, true, 'foo'),
@@ -89,7 +68,6 @@ class NameTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider fullname_provider
-   * @param $ex
    */
   function test_fullname($ex)
   {
@@ -107,9 +85,6 @@ class NameTest extends PHPUnit_Framework_TestCase
     }
   }
 
-  /**
-   * @return array
-   */
   function name_provider()
   {
     return array(array('a', true),
@@ -123,8 +98,6 @@ class NameTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider name_provider
-   * @param $name
-   * @param $is_well_formed
    */
   function test_name($name, $is_well_formed)
   {

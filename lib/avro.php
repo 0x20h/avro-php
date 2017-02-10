@@ -33,12 +33,6 @@
 class AvroException extends Exception {}
 
 /**
- * Unimplemented feature exception.
- * @package Avro
- */
-class AvroNotImplementedException extends AvroException {}
-
-/**
  * Library-level class for PHP Avro port.
  *
  * Contains library details such as version number and platform checks.
@@ -119,7 +113,7 @@ class Avro
   }
 
   /**
-   * @return boolean true if the PHP GMP extension is used and false otherwise.
+   * @returns boolean true if the PHP GMP extension is used and false otherwise.
    * @internal Requires Avro::check_64_bit() (exposed via Avro::check_platform())
    *           to have been called to set Avro::$biginteger_mode.
    */
@@ -167,7 +161,7 @@ class Avro
   }
 
   /**
-   * @return boolean true if the host platform is big endian
+   * @returns boolean true if the host platform is big endian
    *                  and false otherwise.
    * @uses self::set_endianness()
    */
@@ -180,7 +174,7 @@ class Avro
   }
 
   /**
-   * @return boolean true if the host platform is little endian,
+   * @returns boolean true if the host platform is little endian,
    *                  and false otherwise.
    * @uses self::is_bin_endian_platform()
    */

@@ -31,11 +31,6 @@ class AvroProtocol
   public $namespace;
   public $schemata;
 
-  /**
-   * @param $json
-   * @return AvroProtocol
-   * @throws AvroProtocolParseException
-   */
   public static function parse($json)
   {
     if (is_null($json))
@@ -46,10 +41,6 @@ class AvroProtocol
     return $protocol;
   }
 
-  /**
-   * @param $avro
-   * @throws AvroSchemaParseException
-   */
   function real_parse($avro) {
     $this->protocol = $avro["protocol"];
     $this->namespace = $avro["namespace"];
@@ -69,9 +60,6 @@ class AvroProtocol
   }
 }
 
-/**
- * Class AvroProtocolMessage
- */
 class AvroProtocolMessage
 {
   /**
@@ -82,12 +70,6 @@ class AvroProtocolMessage
 
   public $response;
 
-  /**
-   * AvroProtocolMessage constructor.
-   * @param $name
-   * @param $avro
-   * @param $protocol
-   */
   public function __construct($name, $avro, $protocol)
   {
     $this->name = $name;
@@ -101,7 +83,4 @@ class AvroProtocolMessage
   }
 }
 
-/**
- * Class AvroProtocolParseException
- */
 class AvroProtocolParseException extends AvroException {};

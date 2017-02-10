@@ -19,9 +19,6 @@
 
 require_once('test_helper.php');
 
-/**
- * Class InterOpTest
- */
 class InterOpTest extends PHPUnit_Framework_TestCase
 {
   var $projection_json;
@@ -34,9 +31,6 @@ class InterOpTest extends PHPUnit_Framework_TestCase
     $this->projection = AvroSchema::parse($this->projection_json);
   }
 
-  /**
-   * @return array
-   */
   public function file_name_provider()
   {
     $data_dir = AVRO_BUILD_DATA_DIR;
@@ -60,9 +54,7 @@ class InterOpTest extends PHPUnit_Framework_TestCase
   }
 
   /**
-   * @dataProvider file_name_provider
-   * @param $file_name
-   * @throws AvroDataIOException
+   *  @dataProvider file_name_provider
    */
   public function test_read($file_name)
   {

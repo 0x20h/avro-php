@@ -19,9 +19,6 @@
 
 require_once('test_helper.php');
 
-/**
- * Class IODatumReaderTest
- */
 class IODatumReaderTest extends PHPUnit_Framework_TestCase
 {
 

@@ -18,9 +18,6 @@
  */
 require_once('test_helper.php');
 
-/**
- * Class LongEncodingTest
- */
 class LongEncodingTest extends PHPUnit_Framework_TestCase
 {
 
@@ -29,9 +26,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
     Avro::check_platform();
   }
 
-  /**
-   * @return bool
-   */
   static function is_64_bit() { return (PHP_INT_SIZE == 8); }
   function skip_64_bit_test_on_32_bit()
   {
@@ -45,13 +39,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
       $this->markTestSkipped('Requires GMP PHP Extension.');
   }
 
-  /**
-   * @param $expected
-   * @param $actual
-   * @param $shift_type
-   * @param $expected_binary
-   * @param $actual_binary
-   */
   function assert_bit_shift($expected, $actual, $shift_type,
                             $expected_binary, $actual_binary)
   {
@@ -64,12 +51,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider bit_shift_provider
-   * @param $val
-   * @param $shift
-   * @param $expected_lval
-   * @param $expected_rval
-   * @param $lbin
-   * @param $rbin
    */
   function test_bit_shift($val, $shift, $expected_lval, $expected_rval, $lbin, $rbin)
   {
@@ -86,12 +67,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider bit_shift_provider
-   * @param $val
-   * @param $shift
-   * @param $expected_lval
-   * @param $expected_rval
-   * @param $lbin
-   * @param $rbin
    */
   function test_left_shift_gmp($val, $shift,
                                $expected_lval, $expected_rval,
@@ -105,12 +80,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider bit_shift_provider
-   * @param $val
-   * @param $shift
-   * @param $expected_lval
-   * @param $expected_rval
-   * @param $lbin
-   * @param $rbin
    */
   function test_right_shift_gmp($val, $shift, $expected_lval, $expected_rval,
                                 $lbin, $rbin)
@@ -123,8 +92,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider long_provider
-   * @param $val
-   * @param $expected_bytes
    */
   function test_encode_long($val, $expected_bytes)
   {
@@ -135,8 +102,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider long_provider
-   * @param $val
-   * @param $expected_bytes
    */
   function test_gmp_encode_long($val, $expected_bytes)
   {
@@ -147,8 +112,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider long_provider
-   * @param $expected_val
-   * @param $bytes
    */
   function test_decode_long_from_array($expected_val, $bytes)
   {
@@ -160,8 +123,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider long_provider
-   * @param $expected_val
-   * @param $bytes
    */
   function test_gmp_decode_long_from_array($expected_val, $bytes)
   {
@@ -171,9 +132,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
     $this->assertEquals($expected_val, $val);
   }
 
-  /**
-   * @return array
-   */
   function long_provider()
   {
     return array(array('0', "\x0"),
@@ -191,9 +149,6 @@ class LongEncodingTest extends PHPUnit_Framework_TestCase
 
   }
 
-  /**
-   * @return array
-   */
   function bit_shift_provider()
   {
                       // val shift lval rval

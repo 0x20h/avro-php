@@ -18,9 +18,6 @@
  */
 require_once('test_helper.php');
 
-/**
- * Class FloatIntEncodingTest
- */
 class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
 {
   const FLOAT_TYPE = 'float';
@@ -94,9 +91,6 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
 
   }
 
-  /**
-   * @return array
-   */
   function special_vals_provider()
   {
     self::make_special_vals();
@@ -108,18 +102,12 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider special_vals_provider
-   * @param $type
-   * @param $val
-   * @param $bits
    */
   function test_encoding_special_values($type, $val, $bits)
   {
     $this->assert_encode_values($type, $val, $bits);
   }
 
-  /**
-   * @return array
-   */
   function nan_vals_provider()
   {
     self::make_special_vals();
@@ -129,20 +117,23 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider nan_vals_provider
-   * @param $type
-   * @param $val
-   * @param $bits
    */
   function test_encoding_nan_values($type, $val, $bits)
   {
     $this->assert_encode_nan_values($type, $val, $bits);
   }
 
-  /**
-   * @return array
-   */
   function normal_vals_provider()
   {
+    $ruby_to_generate_vals =<<<_RUBY
+      def d2lb(d); [d].pack('E') end
+      dary = (-10..10).to_a + [-1234.2132, -211e23]
+      dary.each {|x| b = d2lb(x); puts %/array(self::DOUBLE_TYPE, (double) #{x}, #{b.inspect}, '#{b.unpack('h*')[0]}'),/}
+      def f2ib(f); [f].pack('e') end
+      fary = (-10..10).to_a + [-1234.5, -211.3e6]
+      fary.each {|x| b = f2ib(x); puts %/array(self::FLOAT_TYPE, (float) #{x}, #{b.inspect}, '#{b.unpack('h*')[0]}'),/}
+_RUBY;
+
     return array(
                  array(self::DOUBLE_TYPE, (double) -10, "\000\000\000\000\000\000$\300", '000000000000420c'),
                  array(self::DOUBLE_TYPE, (double) -9, "\000\000\000\000\000\000\"\300", '000000000000220c'),
@@ -194,9 +185,6 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
       );
   }
 
-  /**
-   * @return array
-   */
   function float_vals_provider()
   {
     $ary = array();
@@ -208,9 +196,6 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
     return $ary;
   }
 
-  /**
-   * @return array
-   */
   function double_vals_provider()
   {
     $ary = array();
@@ -225,9 +210,6 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider float_vals_provider
-   * @param $type
-   * @param $val
-   * @param $bits
    */
   function test_encoding_float_values($type, $val, $bits)
   {
@@ -236,20 +218,12 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
 
   /**
    * @dataProvider double_vals_provider
-   * @param $type
-   * @param $val
-   * @param $bits
    */
   function test_encoding_double_values($type, $val, $bits)
   {
     $this->assert_encode_values($type, $val, $bits);
   }
 
-  /**
-   * @param $type
-   * @param $val
-   * @param $bits
-   */
   function assert_encode_values($type, $val, $bits)
   {
     if (self::FLOAT_TYPE == $type)
@@ -281,11 +255,6 @@ class FloatIntEncodingTest extends PHPUnit_Framework_TestCase
                                 'ROUND TRIP BITS', $val, $round_trip_value));
   }
 
-  /**
-   * @param $type
-   * @param $val
-   * @param $bits
-   */
   function assert_encode_nan_values($type, $val, $bits)
   {
     if (self::FLOAT_TYPE == $type)
